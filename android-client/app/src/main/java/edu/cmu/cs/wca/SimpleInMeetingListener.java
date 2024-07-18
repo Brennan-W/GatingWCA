@@ -69,7 +69,7 @@ public abstract class SimpleInMeetingListener implements InMeetingServiceListene
 
     }
 
-    @Override
+//    @Override
     public void onMeetingCoHostChanged(long l) {
 
     }
@@ -84,7 +84,7 @@ public abstract class SimpleInMeetingListener implements InMeetingServiceListene
 
     }
 
-    @Override
+//    @Override
     public void onSpotlightVideoChanged(boolean b) {
 
     }
@@ -124,7 +124,7 @@ public abstract class SimpleInMeetingListener implements InMeetingServiceListene
 
     }
 
-    @Override
+//    @Override
     public void onUserNetworkQualityChanged(long userId) {
 
 
@@ -165,7 +165,7 @@ public abstract class SimpleInMeetingListener implements InMeetingServiceListene
 
     }
 
-    @Override
+//    @Override
     public void onUserNameChanged(long userId, String name) {
 
     }

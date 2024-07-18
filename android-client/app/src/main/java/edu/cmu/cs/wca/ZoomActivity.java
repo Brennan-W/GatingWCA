@@ -13,7 +13,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import us.zoom.sdk.CameraControlRequestResult;
+import us.zoom.sdk.CameraControlRequestType;
 import us.zoom.sdk.CameraDevice;
+import us.zoom.sdk.ICameraControlRequestHandler;
+import us.zoom.sdk.IMeetingArchiveConfirmHandler;
+import us.zoom.sdk.IMeetingInputUserInfoHandler;
 import us.zoom.sdk.InMeetingEventHandler;
 import us.zoom.sdk.InMeetingService;
 import us.zoom.sdk.InMeetingServiceListener;
@@ -32,6 +37,9 @@ import us.zoom.sdk.MobileRTCVideoView;
 import us.zoom.sdk.MobileRTCVideoViewManager;
 import us.zoom.sdk.ZoomError;
 import us.zoom.sdk.ZoomSDK;
+import us.zoom.sdk.ZoomSDKFileReceiver;
+import us.zoom.sdk.ZoomSDKFileSender;
+import us.zoom.sdk.ZoomSDKFileTransferInfo;
 import us.zoom.sdk.ZoomSDKInitParams;
 import us.zoom.sdk.ZoomSDKInitializeListener;
 
@@ -175,6 +183,23 @@ public class ZoomActivity extends AppCompatActivity {
     }
 
     private final InMeetingServiceListener inMeetingServiceListener = new SimpleInMeetingListener() {
+
+        /**
+         * @param iMeetingInputUserInfoHandler
+         */
+        @Override
+        public void onJoinMeetingNeedUserInfo(IMeetingInputUserInfoHandler iMeetingInputUserInfoHandler) {
+
+        }
+
+        /**
+         * @param inMeetingEventHandler
+         */
+        @Override
+        public void onWebinarNeedInputScreenName(InMeetingEventHandler inMeetingEventHandler) {
+
+        }
+
         @Override
         public void onMeetingNeedCloseOtherMeeting(InMeetingEventHandler inMeetingEventHandler) {
             inMeetingEventHandler.endOtherMeeting();
@@ -195,5 +220,77 @@ public class ZoomActivity extends AppCompatActivity {
             } */
             ZoomActivity.this.finish();
         }
+
+
+        /**
+         * @param s
+         */
+        @Override
+        public void onSinkJoin3rdPartyTelephonyAudio(String s) {
+
+        }
+
+        /**
+         * @param iMeetingArchiveConfirmHandler
+         */
+        @Override
+        public void onUserConfirmToStartArchive(IMeetingArchiveConfirmHandler iMeetingArchiveConfirmHandler) {
+
+        }
+
+        /**
+         * @param l
+         * @param cameraControlRequestType
+         * @param iCameraControlRequestHandler
+         */
+        @Override
+        public void onCameraControlRequestReceived(long l, CameraControlRequestType cameraControlRequestType, ICameraControlRequestHandler iCameraControlRequestHandler) {
+
+        }
+
+        /**
+         * @param l
+         * @param b
+         * @deprecated
+         */
+        @Override
+        public void onCameraControlRequestResult(long l, boolean b) {
+
+        }
+
+        /**
+         * @param l
+         * @param cameraControlRequestResult
+         */
+        @Override
+        public void onCameraControlRequestResult(long l, CameraControlRequestResult cameraControlRequestResult) {
+
+        }
+
+        /**
+         * @param zoomSDKFileSender
+         */
+        @Override
+        public void onFileSendStart(ZoomSDKFileSender zoomSDKFileSender) {
+
+        }
+
+        /**
+         * @param zoomSDKFileReceiver
+         */
+        @Override
+        public void onFileReceived(ZoomSDKFileReceiver zoomSDKFileReceiver) {
+
+        }
+
+        /**
+         * @param zoomSDKFileTransferInfo
+         */
+        @Override
+        public void onFileTransferProgress(ZoomSDKFileTransferInfo zoomSDKFileTransferInfo) {
+
+        }
+
+
     };
 }
