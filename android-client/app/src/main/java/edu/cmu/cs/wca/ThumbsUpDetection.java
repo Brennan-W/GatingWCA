@@ -17,7 +17,7 @@ public class ThumbsUpDetection {
         HandsOptions handsOptions = HandsOptions.builder()
                 .setStaticImageMode(false)
                 .setMaxNumHands(2)
-                .setRunOnGpu(true)
+                .setRunOnGpu(false) //BW
                 .build();
         hands = new Hands(mainActivity, handsOptions);
     }
