@@ -1,0 +1,11 @@
+x
+Start)
+D1DummyProcessor"{"dummy_input":"0"}D
+Look4Wrench
+StartLookingAlways"{}Find the wrench"Step 1¶
+Step 1J
+step1YoloProcessor"2{"model_path":"/model/yolo","conf_threshold":".6"}`
+WrenchFound7
+pFoundWrenchHasObjectClass"{"class_name":"wrench"}Congratulations!"Done[
+DoneS
+pWrenchFoundYoloProcessor"4{"model_path":"/models/yolo","conf_threshold":"0.8"}"Start
