@@ -6,6 +6,7 @@ import os
 import shutil
 from datetime import datetime
 from collections import namedtuple
+import multiprocessing
 from multiprocessing import Process, Pipe
 
 from PIL import Image
@@ -89,8 +90,12 @@ class _StatesModels:
         if detector_path not in self._object_detectors:
             detector = YOLO(detector_path)
             print(detector.names)
-            detector.to('cuda')
 
+            # try:
+            #     detector.to('cuda')
+            # except AssertionError:
+            #     print("CUDA not configured on server")
+            
             self._object_detectors[detector_path] = detector
 
     def get_object_detector(self, path):
@@ -362,17 +367,20 @@ class InferenceEngine(cognitive_engine.Engine):
         return self._result_wrapper_for(step)
 
 
+def engine_factory(fsm_file_path):
+    return InferenceEngine(fsm_file_path)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('fsm_file_path', type=str)
     args = parser.parse_args()
 
-    def engine_factory():
-        return InferenceEngine(args.fsm_file_path)
-
     local_engine.run(
-        engine_factory, SOURCE, INPUT_QUEUE_MAXSIZE, PORT, NUM_TOKENS)
+    engine_factory(args.fsm_file_path), SOURCE, INPUT_QUEUE_MAXSIZE, PORT, NUM_TOKENS)
 
 
 if __name__ == '__main__':
+    multiprocessing.set_start_method('spawn')
+
     main()

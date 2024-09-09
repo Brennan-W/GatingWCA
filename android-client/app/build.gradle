@@ -13,6 +13,10 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 android {
     compileSdkVersion 34
 
+
+
+
+
     // Add this block to ensure the task order
     tasks.configureEach { task ->
         if (task.name == 'compileDebugAndroidTestJavaWithJavac') {
